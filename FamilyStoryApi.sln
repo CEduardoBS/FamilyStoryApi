@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyStoryApi", "FamilyStoryApi.csproj", "{633878F7-95CC-407C-830B-103F3F2517B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{633878F7-95CC-407C-830B-103F3F2517B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{633878F7-95CC-407C-830B-103F3F2517B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{633878F7-95CC-407C-830B-103F3F2517B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{633878F7-95CC-407C-830B-103F3F2517B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {303369B1-7E6B-4FF4-8E81-D7AD2F532AAD}
+	EndGlobalSection
+EndGlobal
