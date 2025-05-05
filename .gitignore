@@ -1,0 +1,28 @@
+# Build results
+bin/
+obj/
+
+# VS Code files
+.vscode/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Logs
+*.log
+
+# Other
+*.db
+*.sqlite
+*.bak
+*.DS_Store
+Thumbs.db
