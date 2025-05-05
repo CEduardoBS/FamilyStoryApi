@@ -8,6 +8,6 @@
 
         public int Delete(T userInfo);
 
-        public T GetById(T userInfo);
+        public T GetById(int id);
     }
 }

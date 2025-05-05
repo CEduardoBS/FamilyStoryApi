@@ -16,22 +16,77 @@ namespace FamilyStoryApi.Repository.Implementation
 
         public UserInfo Create(UserInfo userInfo)
         {
-            throw new NotImplementedException();
+            UserInfo userCreated;
+
+            try
+            {
+                _userInfo.Add(userInfo);
+                _dbContext.SaveChanges();
+
+                userCreated = _userInfo
+                    .AsNoTracking()
+                    .Include(user => user.UserGroup)
+                    .First(user => user.Email.ToUpper() == userInfo.Email);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return userCreated;
         }
 
         public int Delete(UserInfo userInfo)
         {
-            throw new NotImplementedException();
+            int rowsUpdate = 0;
+            try
+            {
+                userInfo.IsDeleted = 1;
+
+                _userInfo.Update(userInfo);
+                rowsUpdate = _dbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return rowsUpdate;
         }
 
-        public UserInfo GetById(UserInfo userInfo)
+        public UserInfo GetById(int id)
         {
-            throw new NotImplementedException();
+            UserInfo userFound;
+            try
+            {
+                userFound = _userInfo.AsNoTracking().First(user => user.UserId == id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return userFound;
         }
 
         public UserInfo Update(UserInfo userInfo)
         {
-            throw new NotImplementedException();
+            UserInfo userUpdated;
+            try
+            {
+                _userInfo.Update(userInfo);
+                _dbContext.SaveChanges();
+
+                userUpdated = _userInfo
+                    .AsNoTracking()
+                    .Include(user => user.UserGroup)
+                    .First(user => user.Email.ToUpper() == userInfo.Email);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return userUpdated;
         }
     }
 }
