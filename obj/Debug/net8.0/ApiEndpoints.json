@@ -3,10 +3,16 @@
     "ContainingType": "FamilyStoryApi.Controllers.UserController",
     "Method": "GetUser",
     "RelativePath": "api/User",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "userInfo",
+        "Type": "FamilyStoryApi.Model.UserInfo",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

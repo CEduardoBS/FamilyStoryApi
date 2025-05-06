@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FamilyStoryApi.Business;
+using FamilyStoryApi.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FamilyStoryApi.Controllers
@@ -7,9 +9,17 @@ namespace FamilyStoryApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetUser()
+        private readonly IUserInfoBusiness _userInfoBusiness;
+
+        public UserController(IUserInfoBusiness userInfoBusiness)
         {
+            _userInfoBusiness = userInfoBusiness;
+        }
+
+        [HttpPost]
+        public IActionResult GetUser([FromBody] UserInfo userInfo)
+        {
+            _userInfoBusiness.Create(userInfo);
             return Ok("Sucesso");
         }
     }
