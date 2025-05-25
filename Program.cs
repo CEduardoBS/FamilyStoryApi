@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-string connectionString = "Server=localhost,1433;Database=Family_Story;User id=sa;Password=1q2w3e4r@#$";
+string connectionString = "Server=localhost,1433;Database=Family_Story;User id=sa;Password=1q2w3e4r@#$;TrustServerCertificate=True;";
 builder.Services.AddDbContext<FamilyStoryContext>(options =>  options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IUserInfoRepository, UserInfoRepositoryImplementation>();

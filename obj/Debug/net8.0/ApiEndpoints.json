@@ -1,8 +1,24 @@
 [
   {
     "ContainingType": "FamilyStoryApi.Controllers.UserController",
-    "Method": "GetUser",
-    "RelativePath": "api/User",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "Method": "CreteUser",
+    "RelativePath": "api/User/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -10,6 +26,43 @@
       {
         "Name": "userInfo",
         "Type": "FamilyStoryApi.Model.UserInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "Method": "GetUser",
+    "RelativePath": "api/User/id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "Method": "GetUserByRange",
+    "RelativePath": "api/User/range/skip={skip}\u0026take={take}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "skip",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "take",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
