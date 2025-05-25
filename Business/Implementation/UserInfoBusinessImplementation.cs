@@ -1,5 +1,6 @@
 ﻿using FamilyStoryApi.Model;
 using FamilyStoryApi.Repository;
+using System.Linq.Expressions;
 
 namespace FamilyStoryApi.Business.Implementation
 {
@@ -12,32 +13,82 @@ namespace FamilyStoryApi.Business.Implementation
             _userInfoRepository = userInfoRepository;
         }
 
-        public bool Create(UserInfo userInfo)
+        public UserInfo Create(UserInfo userInfo)
         {
             try
             {
-                _userInfoRepository.Create(userInfo);
+                UserInfo userCreated = _userInfoRepository.Create(userInfo);
+                return userCreated;
             }
-            catch (Exception)
+            catch
             {
                 throw;
             }
-            throw new NotImplementedException();
         }
 
-        public bool Delete(UserInfo userInfo)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                bool wasDeleted = false;
+
+                UserInfo user = _userInfoRepository.GetById(id);
+                int qtdRowUpdated = _userInfoRepository.Delete(user);
+
+                if (qtdRowUpdated > 0)
+                {
+                    wasDeleted = true;
+                }
+
+                return wasDeleted;
+            }
+            catch
+            {
+                throw;
+            }
+
         }
 
-        public UserInfo GetById(int Id)
+        public UserInfo GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UserInfo user = _userInfoRepository.GetById(id);
+                return user;
+            }
+            catch
+            {
+                throw;
+            }
+            
+        }
+
+        public List<UserInfo> GetByRange(int skip = 0, int take = 10)
+        {
+            try
+            {
+                List<UserInfo> users = new();
+                users = _userInfoRepository.GetRange(skip, take);
+
+                return users;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public UserInfo Update(UserInfo userInfo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                UserInfo user = _userInfoRepository.Update(userInfo);
+                return user;
+            }
+            catch
+            {
+                throw;
+            }    
         }
     }
 }
