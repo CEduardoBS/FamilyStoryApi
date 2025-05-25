@@ -75,6 +75,21 @@ namespace FamilyStoryApi.Repository.Implementation
             return foundUser!;
         }
 
+        public List<UserInfo> GetRange(int skip = 0, int take = 10)
+        {
+            List<UserInfo> users = new();
+            try
+            {
+                users = _userInfo.AsNoTracking().Skip(skip).Take(take).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return users;
+        }
+
         public UserInfo Update(UserInfo userInfo)
         {
             UserInfo? updatedUser;
