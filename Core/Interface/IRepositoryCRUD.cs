@@ -9,5 +9,7 @@
         public int Delete(T userInfo);
 
         public T GetById(int id);
+
+        public List<T> GetRange(int skip = 0, int take = 10);
     }
 }
