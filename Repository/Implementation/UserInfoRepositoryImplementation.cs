@@ -15,19 +15,19 @@ namespace FamilyStoryApi.Repository.Implementation
             _userInfo = dbContext.Set<UserInfo>();
         }
 
-        public UserInfo Create(UserInfo userInfo)
+        public async Task<UserInfo> Create(UserInfo userInfo)
         {
             UserInfo? createdUser;
 
             try
             {
-                _userInfo.Add(userInfo);
-                _dbContext.SaveChanges();
+                await _userInfo.AddAsync(userInfo);
+                await _dbContext.SaveChangesAsync();
 
-                createdUser = _userInfo
+                createdUser = await _userInfo
                     .AsNoTracking()
                     .Include(user => user.UserGroup)
-                    .FirstOrDefault(user => user.Email.ToLower() == userInfo.Email.ToLower());
+                    .FirstOrDefaultAsync(user => user.Email.ToLower() == userInfo.Email.ToLower());
 
                 if (createdUser is null)
                     throw new Exception(message: "Usuário não cadastrado");
@@ -40,7 +40,7 @@ namespace FamilyStoryApi.Repository.Implementation
             return createdUser;
         }
 
-        public int Delete(UserInfo userInfo)
+        public async Task<int> Delete(UserInfo userInfo)
         {
             int rowsUpdate = 0;
             try
@@ -48,7 +48,7 @@ namespace FamilyStoryApi.Repository.Implementation
                 userInfo.IsDeleted = 1;
 
                 _userInfo.Update(userInfo);
-                rowsUpdate = _dbContext.SaveChanges();
+                rowsUpdate = await _dbContext.SaveChangesAsync();
             }
             catch (Exception)
             {
@@ -57,12 +57,12 @@ namespace FamilyStoryApi.Repository.Implementation
             return rowsUpdate;
         }
 
-        public UserInfo GetById(int id)
+        public async Task<UserInfo> GetById(int id)
         {
             UserInfo? foundUser;
             try
             {
-                foundUser = _userInfo.AsNoTracking().FirstOrDefault(user => user.UserId == id);
+                foundUser = await _userInfo.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == id);
 
                 if (foundUser is null)
                     throw new Exception(message: "Usuário não encontrado");
@@ -75,12 +75,12 @@ namespace FamilyStoryApi.Repository.Implementation
             return foundUser!;
         }
 
-        public List<UserInfo> GetRange(int skip = 0, int take = 10)
+        public async Task<List<UserInfo>> GetRange(int skip = 0, int take = 10)
         {
             List<UserInfo> users = new();
             try
             {
-                users = _userInfo.AsNoTracking().Skip(skip).Take(take).ToList();
+                users = await _userInfo.AsNoTracking().Skip(skip).Take(take).ToListAsync();
             }
             catch (Exception)
             {
@@ -90,13 +90,13 @@ namespace FamilyStoryApi.Repository.Implementation
             return users;
         }
 
-        public UserInfo Update(UserInfo userInfo)
+        public async Task<UserInfo> Update(UserInfo userInfo)
         {
             UserInfo? updatedUser;
             try
             {
                 _userInfo.Update(userInfo);
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
 
                 updatedUser = _userInfo
                     .AsNoTracking()
