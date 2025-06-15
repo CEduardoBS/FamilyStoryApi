@@ -18,12 +18,12 @@ namespace FamilyStoryApi.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult CreteUser([FromBody] UserInfo userInfo)
+        public async Task<IActionResult> CreteUser([FromBody] UserInfo userInfo)
         {
             ResultViewModel<UserInfo> result;
             try
             {
-                UserInfo userCreated = _userInfoBusiness.Create(userInfo);
+                UserInfo userCreated = await _userInfoBusiness.Create(userInfo);
                 result = new(data: userCreated);
             }
             catch (Exception err)
@@ -40,24 +40,24 @@ namespace FamilyStoryApi.Controllers
         }
 
         [HttpGet("id/{id:int}")]
-        public IActionResult GetUser([FromRoute] int id)
+        public async Task<IActionResult> GetUser([FromRoute] int id)
         {
-            _userInfoBusiness.GetById(id);
+            await _userInfoBusiness.GetById(id);
             return Ok("Sucesso");
         }
 
         [HttpGet("range/skip={skip:int}&take={take:int}")]
-        public IActionResult GetUserByRange([FromRoute] int skip, [FromRoute] int take)
+        public async Task<IActionResult> GetUserByRange([FromRoute] int skip, [FromRoute] int take)
         {
-            _userInfoBusiness.GetByRange(skip, take);
+            await _userInfoBusiness.GetByRange(skip, take);
 
             return Ok("Sucesso");
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteUser([FromRoute] int id)
+        public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
-            _userInfoBusiness.Delete(id);
+            await _userInfoBusiness.Delete(id);
             return Ok("Sucesso");
         }
     }

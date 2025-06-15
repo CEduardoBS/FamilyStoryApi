@@ -4,20 +4,15 @@ using System.Linq.Expressions;
 
 namespace FamilyStoryApi.Business.Implementation
 {
-    public class UserInfoBusinessImplementation : IUserInfoBusiness
+    public class UserInfoBusinessImplementation(IUserInfoRepository userInfoRepository) : IUserInfoBusiness
     {
-        private readonly IUserInfoRepository _userInfoRepository;
+        private readonly IUserInfoRepository _userInfoRepository = userInfoRepository;
 
-        public UserInfoBusinessImplementation(IUserInfoRepository userInfoRepository)
-        {
-            _userInfoRepository = userInfoRepository;
-        }
-
-        public UserInfo Create(UserInfo userInfo)
+        public async Task<UserInfo> Create(UserInfo userInfo)
         {
             try
             {
-                UserInfo userCreated = _userInfoRepository.Create(userInfo);
+                UserInfo userCreated = await _userInfoRepository.Create(userInfo);
                 return userCreated;
             }
             catch
@@ -26,14 +21,14 @@ namespace FamilyStoryApi.Business.Implementation
             }
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             try
             {
                 bool wasDeleted = false;
 
-                UserInfo user = _userInfoRepository.GetById(id);
-                int qtdRowUpdated = _userInfoRepository.Delete(user);
+                UserInfo user = await _userInfoRepository.GetById(id);
+                int qtdRowUpdated = await _userInfoRepository.Delete(user);
 
                 if (qtdRowUpdated > 0)
                 {
@@ -49,11 +44,11 @@ namespace FamilyStoryApi.Business.Implementation
 
         }
 
-        public UserInfo GetById(int id)
+        public async Task<UserInfo> GetById(int id)
         {
             try
             {
-                UserInfo user = _userInfoRepository.GetById(id);
+                UserInfo user = await _userInfoRepository.GetById(id);
                 return user;
             }
             catch
@@ -63,12 +58,12 @@ namespace FamilyStoryApi.Business.Implementation
             
         }
 
-        public List<UserInfo> GetByRange(int skip = 0, int take = 10)
+        public async Task<List<UserInfo>> GetByRange(int skip = 0, int take = 10)
         {
             try
             {
                 List<UserInfo> users = new();
-                users = _userInfoRepository.GetRange(skip, take);
+                users = await _userInfoRepository.GetRange(skip, take);
 
                 return users;
             }
@@ -78,11 +73,11 @@ namespace FamilyStoryApi.Business.Implementation
             }
         }
 
-        public UserInfo Update(UserInfo userInfo)
+        public async Task<UserInfo> Update(UserInfo userInfo)
         {
             try
             {
-                UserInfo user = _userInfoRepository.Update(userInfo);
+                UserInfo user = await _userInfoRepository.Update(userInfo);
                 return user;
             }
             catch

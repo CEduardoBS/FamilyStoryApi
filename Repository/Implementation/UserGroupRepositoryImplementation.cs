@@ -29,22 +29,75 @@ namespace FamilyStoryApi.Repository.Implementation
 
         public override async Task<int> Delete(UserGroup userInfo)
         {
-            throw new NotImplementedException();
+            int qtdRowsDeleted = 0;
+            try
+            {
+                userInfo.IsDeleted = 1;
+
+                qtdRowsDeleted = await base.Delete(userInfo);
+
+                if (qtdRowsDeleted <= 0)
+                {
+                    throw new("Não foi possível deleter o usuário!");
+                }
+            }
+            catch (Exception err)
+            {
+                throw new(message: "GRP02|", innerException: err);
+            }
+
+            return qtdRowsDeleted;
         }
 
         public override async Task<UserGroup> GetById(int id)
         {
-            throw new NotImplementedException();
+            UserGroup? foundGroup;
+            try
+            {
+                foundGroup = await base.GetById(id);
+
+                if (foundGroup is null)
+                    throw new Exception(message: "Usuário não encontrado");
+            }
+            catch (Exception err)
+            {
+                throw new("GRP03|", innerException: err);
+            }
+
+            return foundGroup!;
         }
 
         public override async Task<List<UserGroup>> GetRange(int skip = 0, int take = 10)
         {
-            throw new NotImplementedException();
+            List<UserGroup> groups = new();
+            try
+            {
+                groups = await base.GetRange(skip, take);
+            }
+            catch (Exception err)
+            {
+                throw new Exception("GRP03|", innerException: err);
+            }
+
+            return groups;
         }
 
         public override async Task<UserGroup> Update(UserGroup userInfo)
         {
-            throw new NotImplementedException();
+            UserGroup? updatedGroup;
+            try
+            {
+                updatedGroup = await base.Update(userInfo);
+                if (updatedGroup is null)
+                    throw new Exception(message: "Usuário não atualizado");
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return updatedGroup;
         }
     }
 }

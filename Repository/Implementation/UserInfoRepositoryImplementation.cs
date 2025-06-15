@@ -1,108 +1,97 @@
-﻿using FamilyStoryApi.Data;
+﻿using FamilyStoryApi.Core.Interface.Implementation;
+using FamilyStoryApi.Data;
 using FamilyStoryApi.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamilyStoryApi.Repository.Implementation
 {
-    public class UserInfoRepositoryImplementation : IUserInfoRepository
+    public class UserInfoRepositoryImplementation(FamilyStoryContext dbContext) : 
+        RepositoryCRUD<UserInfo>(dbContext),
+        IUserInfoRepository
     {
-        private readonly FamilyStoryContext _dbContext;
-        private DbSet<UserInfo> _userInfo;
-
-        public UserInfoRepositoryImplementation(FamilyStoryContext dbContext)
-        {
-            _dbContext = dbContext;
-            _userInfo = dbContext.Set<UserInfo>();
-        }
-
-        public async Task<UserInfo> Create(UserInfo userInfo)
+        public override async Task<UserInfo> Create(UserInfo userInfo)
         {
             UserInfo? createdUser;
 
             try
             {
-                await _userInfo.AddAsync(userInfo);
-                await _dbContext.SaveChangesAsync();
+                createdUser = await base.Create(userInfo);
 
-                createdUser = await _userInfo
-                    .AsNoTracking()
-                    .Include(user => user.UserGroup)
-                    .FirstOrDefaultAsync(user => user.Email.ToLower() == userInfo.Email.ToLower());
-
-                if (createdUser is null)
-                    throw new Exception(message: "Usuário não cadastrado");
+                if (createdUser.UserId <= 0)
+                {
+                    throw new Exception("Ops! Parece que o usuário não foi gravado corretamente");
+                }
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                throw;
+                throw new(message: "USR01|", innerException: err);
             }
 
             return createdUser;
         }
 
-        public async Task<int> Delete(UserInfo userInfo)
+        public override async Task<int> Delete(UserInfo userInfo)
         {
-            int rowsUpdate = 0;
+            int qtdRowsDeleted = 0;
             try
             {
                 userInfo.IsDeleted = 1;
 
-                _userInfo.Update(userInfo);
-                rowsUpdate = await _dbContext.SaveChangesAsync();
+                qtdRowsDeleted = await base.Delete(userInfo);
+
+                if (qtdRowsDeleted <= 0)
+                {
+                    throw new("Não foi possível deleter o usuário!");
+                }
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                throw;
+                throw new(message: "USR02|", innerException: err);
             }
-            return rowsUpdate;
+
+            return qtdRowsDeleted;
         }
 
-        public async Task<UserInfo> GetById(int id)
+        public override async Task<UserInfo> GetById(int id)
         {
             UserInfo? foundUser;
             try
             {
-                foundUser = await _userInfo.AsNoTracking().FirstOrDefaultAsync(user => user.UserId == id);
+                foundUser = await base.GetById(id);
 
                 if (foundUser is null)
                     throw new Exception(message: "Usuário não encontrado");
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                throw;
+                throw new("USR3|", innerException: err);
             }
 
             return foundUser!;
         }
 
-        public async Task<List<UserInfo>> GetRange(int skip = 0, int take = 10)
+        public override async Task<List<UserInfo>> GetRange(int skip = 0, int take = 10)
         {
             List<UserInfo> users = new();
             try
             {
-                users = await _userInfo.AsNoTracking().Skip(skip).Take(take).ToListAsync();
+                users = await base.GetRange(skip, take);
             }
-            catch (Exception)
+            catch (Exception err)
             {
-                throw;
+                throw new Exception("USR4|", innerException: err);
             }
 
             return users;
         }
 
-        public async Task<UserInfo> Update(UserInfo userInfo)
+        public override async Task<UserInfo> Update(UserInfo userInfo)
         {
             UserInfo? updatedUser;
             try
             {
-                _userInfo.Update(userInfo);
-                await _dbContext.SaveChangesAsync();
 
-                updatedUser = _userInfo
-                    .AsNoTracking()
-                    .Include(user => user.UserGroup)
-                    .FirstOrDefault(user => user.Email.ToUpper() == userInfo.Email);
-
+                updatedUser = await base.Update(userInfo);
                 if (updatedUser is null)
                     throw new Exception(message: "Usuário não atualizado");
 
