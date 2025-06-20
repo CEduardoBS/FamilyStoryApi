@@ -10,6 +10,7 @@ namespace FamilyStoryApi.Model
         [Column("usr_id")]
         public int UserId { get; set; }
 
+        [EmailAddress]
         [Column("usr_email")]
         public string Email { get; set; } = string.Empty;
 
@@ -23,14 +24,14 @@ namespace FamilyStoryApi.Model
         public DateTime CreateAt { get; set; }
 
         [Column("usr_is_deleted")]
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [Column("usr_is_active")]
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
 
         [Column("usr_group")]
         [ForeignKey("UserGroupId")]
         public int UserGroupId { get; set; }
-        public UserGroup UserGroup { get; set; }
+        public UserGroup? UserGroup { get; set; }
     }
 }

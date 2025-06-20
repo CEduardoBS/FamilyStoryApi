@@ -133,12 +133,10 @@
             "format": "date-time"
           },
           "isDeleted": {
-            "type": "integer",
-            "format": "int32"
+            "type": "boolean"
           },
           "isActive": {
-            "type": "integer",
-            "format": "int32"
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -152,6 +150,7 @@
           },
           "email": {
             "type": "string",
+            "format": "email",
             "nullable": true
           },
           "name": {
@@ -167,12 +166,10 @@
             "format": "date-time"
           },
           "isDeleted": {
-            "type": "integer",
-            "format": "int32"
+            "type": "boolean"
           },
           "isActive": {
-            "type": "integer",
-            "format": "int32"
+            "type": "boolean"
           },
           "userGroupId": {
             "type": "integer",

@@ -17,9 +17,9 @@ namespace FamilyStoryApi.Model
         public DateTime CreateAt { get; set; }
 
         [Column("grp_is_deleted")]
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [Column("grp_is_active")]
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

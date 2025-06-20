@@ -35,7 +35,7 @@ namespace FamilyStoryApi.Repository.Implementation
             int qtdRowsDeleted = 0;
             try
             {
-                userInfo.IsDeleted = 1;
+                userInfo.IsDeleted = true;
 
                 qtdRowsDeleted = await base.Delete(userInfo);
 

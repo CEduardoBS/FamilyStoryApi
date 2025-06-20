@@ -8,14 +8,9 @@ namespace FamilyStoryApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController(IUserInfoBusiness userInfoBusiness) : ControllerBase
     {
-        private readonly IUserInfoBusiness _userInfoBusiness;
-
-        public UserController(IUserInfoBusiness userInfoBusiness)
-        {
-            _userInfoBusiness = userInfoBusiness;
-        }
+        private readonly IUserInfoBusiness _userInfoBusiness = userInfoBusiness;
 
         [HttpPost("create")]
         public async Task<IActionResult> CreteUser([FromBody] UserInfo userInfo)
@@ -42,16 +37,16 @@ namespace FamilyStoryApi.Controllers
         [HttpGet("id/{id:int}")]
         public async Task<IActionResult> GetUser([FromRoute] int id)
         {
-            await _userInfoBusiness.GetById(id);
-            return Ok("Sucesso");
+            UserInfo userInfo = await _userInfoBusiness.GetById(id);
+            return Ok(userInfo);
         }
 
         [HttpGet("range/skip={skip:int}&take={take:int}")]
         public async Task<IActionResult> GetUserByRange([FromRoute] int skip, [FromRoute] int take)
         {
-            await _userInfoBusiness.GetByRange(skip, take);
+            List<UserInfo> userInfo =  await _userInfoBusiness.GetByRange(skip, take);
 
-            return Ok("Sucesso");
+            return Ok(userInfo);
         }
 
         [HttpDelete("{id:int}")]
