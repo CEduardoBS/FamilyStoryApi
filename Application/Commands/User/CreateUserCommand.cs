@@ -2,7 +2,7 @@
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Domain.ValueObjects;
 
-namespace FamilyStoryApi.Application.Commands
+namespace FamilyStoryApi.Application.Commands.User
 {
     public class CreateUserCommand : Notifiable, ICommandEntry
     {
@@ -24,8 +24,8 @@ namespace FamilyStoryApi.Application.Commands
 
         public bool Validate()
         {
-            base.AddNotifications(Name, Email);
-            return base.IsValid;
+            AddNotifications(Name, Email);
+            return IsValid;
         }
     }
 }

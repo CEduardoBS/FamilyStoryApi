@@ -5,6 +5,5 @@ namespace FamilyStoryApi.Infra.Repository
 {
     public interface IUserInfoRepository : IRepositoryCRUD<UserInfo>
     {
-
     }
 }

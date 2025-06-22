@@ -1,4 +1,6 @@
-﻿using FamilyStoryApi.Application.Handlers;
+﻿using FamilyStoryApi.Application.Handlers.User;
+using FamilyStoryApi.Application.Queries.User.GetUserById;
+using FamilyStoryApi.Application.Queries.User.GetUserByList;
 using FamilyStoryApi.Business;
 using FamilyStoryApi.Business.Implementation;
 using FamilyStoryApi.Infra.Repository;
@@ -12,8 +14,14 @@ namespace FamilyStoryApi.Infra.Configuration
         {
             services.AddScoped<IUserInfoRepository, UserInfoRepositoryImplementation>();
             services.AddScoped<IUserInfoBusiness, UserInfoBusinessImplementation>();
-
+            
+            // Handlers
             services.AddScoped<CreateUserHandler>();
+            services.AddScoped<DeleteUserHandler>();
+
+            //Queries
+            services.AddScoped<GetUserByIdHandler>();
+            services.AddScoped<GetUserListByRangeHandler>();
 
             return services;
         }

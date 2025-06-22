@@ -6,98 +6,44 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamilyStoryApi.Infra.Repository.Implementation
 {
-    public class UserGroupRepositoryImplementation(FamilyStoryContext context) 
+    public class UserGroupRepositoryImplementation(FamilyStoryContext context)
         : RepositoryCRUD<UserGroup>(context), IUserGroupRepository
     {
         public override async Task<UserGroup> Create(UserGroup group)
         {
-            try
-            {
-                UserGroup groupCreated = await base.Create(group);
-
-                if (groupCreated.GroupId <= 0)
-                {
-                    throw new Exception("Ops! Parece que o grupo não foi gravado corretamente");
-                }
-
-                return groupCreated;
-            }
-            catch(Exception err)
-            {
-                throw new(message: "GRP01|", innerException: err);
-            }
+            await base.Create(group);
+            return group;
         }
 
-        public override async Task<int> Delete(UserGroup userInfo)
+        public override async Task<int> Delete(UserGroup group)
         {
-            int qtdRowsDeleted;
-            try
-            {
-                userInfo.IsDeleted = true;
-
-                qtdRowsDeleted = await base.Delete(userInfo);
-
-                if (qtdRowsDeleted <= 0)
-                {
-                    throw new("Não foi possível deleter o usuário!");
-                }
-            }
-            catch (Exception err)
-            {
-                throw new(message: "GRP02|", innerException: err);
-            }
-
+            int qtdRowsDeleted = await base.Delete(group);
             return qtdRowsDeleted;
         }
 
-        public override async Task<UserGroup> GetById(int id)
+        public override async Task<UserGroup> SoftDelete(UserGroup group)
         {
-            UserGroup? foundGroup;
-            try
-            {
-                foundGroup = await base.GetById(id);
+            UserGroup updatedGroup = await base.Update(group);
+            return updatedGroup;
+        }
 
-                if (foundGroup is null)
-                    throw new Exception(message: "Usuário não encontrado");
-            }
-            catch (Exception err)
-            {
-                throw new("GRP03|", innerException: err);
-            }
-
-            return foundGroup!;
+        public override async Task<UserGroup?> GetById(int id)
+        {
+            UserGroup? foundGroup = await base.GetById(id);
+            return foundGroup;
         }
 
         public override async Task<List<UserGroup>> GetRange(int skip = 0, int take = 10)
         {
-            List<UserGroup> groups = new();
-            try
-            {
-                groups = await base.GetRange(skip, take);
-            }
-            catch (Exception err)
-            {
-                throw new Exception("GRP03|", innerException: err);
-            }
+            List<UserGroup> groups = [];
+            groups = await base.GetRange(skip, take);
 
             return groups;
         }
 
-        public override async Task<UserGroup> Update(UserGroup userInfo)
+        public override async Task<UserGroup> Update(UserGroup group)
         {
-            UserGroup? updatedGroup;
-            try
-            {
-                updatedGroup = await base.Update(userInfo);
-                if (updatedGroup is null)
-                    throw new Exception(message: "Usuário não atualizado");
-
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
+            UserGroup updatedGroup = await base.Update(group);
             return updatedGroup;
         }
     }

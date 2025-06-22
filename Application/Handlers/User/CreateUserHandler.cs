@@ -1,4 +1,4 @@
-﻿using FamilyStoryApi.Application.Commands;
+﻿using FamilyStoryApi.Application.Commands.User;
 using FamilyStoryApi.Application.Handlers.Interface;
 using FamilyStoryApi.Application.Results;
 using FamilyStoryApi.Application.Results.Interfaces;
@@ -6,7 +6,7 @@ using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.Infra.Repository;
 
-namespace FamilyStoryApi.Application.Handlers
+namespace FamilyStoryApi.Application.Handlers.User
 {
     public class CreateUserHandler(IUserInfoRepository userInfoRepository) : Notifiable, IHandlerAsync<CreateUserCommand, CommandResult<UserInfo>>
     {
@@ -14,7 +14,7 @@ namespace FamilyStoryApi.Application.Handlers
 
         public async Task<CommandResult<UserInfo>> HandleAsync(CreateUserCommand command)
         {
-            CommandResult<UserInfo> cmResult;
+            CommandResult<UserInfo> cmdResult;
             try
             {
                 UserInfo newUser = new()
@@ -34,7 +34,7 @@ namespace FamilyStoryApi.Application.Handlers
 
                 if (userCreated.UserId > 0)
                 {
-                    cmResult = new(
+                    cmdResult = new(
                             success: true,
                             message: "Sucesso ao criar usuário!",
                             data: userCreated
@@ -42,21 +42,25 @@ namespace FamilyStoryApi.Application.Handlers
                 }
                 else
                 {
-                    cmResult = new(
+                    cmdResult = new(
                             success: false,
-                            message: "Não foi´possível criar o usuário!"
+                            message: "Não foi possível criar o usuário!"
                         );
+
+                    this.AddNotification(cmdResult.Message);
                 }
             }
             catch (Exception err)
             {
-                cmResult = new(
+                cmdResult = new(
                            success: false,
-                           message: $"Não foi´possível criar o usuário! {err.Message}"
+                           message: $"Não foi possível criar o usuário! {err.Message}"
                        );
+
+                this.AddNotification(cmdResult.Message);
             }
 
-            return cmResult;
+            return cmdResult;
         }
     }
 }

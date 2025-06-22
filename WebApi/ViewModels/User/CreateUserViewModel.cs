@@ -1,6 +1,6 @@
 ﻿using FamilyStoryApi.Domain.ValueObjects;
 
-namespace FamilyStoryApi.WebApi.ViewModels
+namespace FamilyStoryApi.WebApi.ViewModels.User
 {
     public class CreateUserViewModel
     {

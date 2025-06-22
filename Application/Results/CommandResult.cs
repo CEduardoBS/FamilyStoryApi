@@ -3,7 +3,7 @@ using FamilyStoryApi.Core.Entities;
 
 namespace FamilyStoryApi.Application.Results
 {
-    public class CommandResult<T> : Notifiable, ICommandResult
+    public class CommandResult<T> : ICommandResult
     {
         public string Message { get; set; }
         public bool Success { get; set; }
