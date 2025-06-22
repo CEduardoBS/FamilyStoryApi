@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "DELETE",
@@ -16,7 +16,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "CreteUser",
     "RelativePath": "api/User/create",
     "HttpMethod": "POST",
@@ -25,14 +25,14 @@
     "Parameters": [
       {
         "Name": "userInfo",
-        "Type": "FamilyStoryApi.Model.UserInfo",
+        "Type": "FamilyStoryApi.WebApi.ViewModels.CreateUserViewModel",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "GetUser",
     "RelativePath": "api/User/id/{id}",
     "HttpMethod": "GET",
@@ -48,7 +48,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamilyStoryApi.Controllers.UserController",
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "GetUserByRange",
     "RelativePath": "api/User/range/skip={skip}\u0026take={take}",
     "HttpMethod": "GET",

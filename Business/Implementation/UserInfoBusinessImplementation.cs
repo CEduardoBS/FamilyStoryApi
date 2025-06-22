@@ -1,6 +1,5 @@
-﻿using FamilyStoryApi.Model;
-using FamilyStoryApi.Repository;
-using System.Linq.Expressions;
+﻿using FamilyStoryApi.Infra.Entities;
+using FamilyStoryApi.Infra.Repository;
 
 namespace FamilyStoryApi.Business.Implementation
 {
@@ -62,7 +61,7 @@ namespace FamilyStoryApi.Business.Implementation
         {
             try
             {
-                List<UserInfo> users = new();
+                List<UserInfo> users = [];
                 users = await _userInfoRepository.GetRange(skip, take);
 
                 return users;

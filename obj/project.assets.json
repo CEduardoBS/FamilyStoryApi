@@ -47,15 +47,6 @@
           }
         }
       },
-      "Flunt/2.0.5": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Flunt.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Flunt.dll": {}
-        }
-      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1142,19 +1133,6 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
-      ]
-    },
-    "Flunt/2.0.5": {
-      "sha512": "CMgq8FUYjkHzyZT3PhkUwZyy79mudON+EL4b0SAT7BfIOJ2CNypwnbdA0cPHAM2CYQfO2L8ubNJCiBHQOIv2pA==",
-      "type": "package",
-      "path": "flunt/2.0.5",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "flunt.2.0.5.nupkg.sha512",
-        "flunt.nuspec",
-        "icon.png",
-        "lib/netstandard2.0/Flunt.dll"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -3049,7 +3027,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Flunt >= 2.0.5",
       "Microsoft.EntityFrameworkCore >= 9.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.6",
       "Swashbuckle.AspNetCore >= 9.0.1"
@@ -3106,10 +3083,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Flunt": {
-            "target": "Package",
-            "version": "[2.0.5, )"
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[9.0.6, )"

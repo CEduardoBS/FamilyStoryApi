@@ -14,17 +14,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserInfo"
+                "$ref": "#/components/schemas/CreateUserViewModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserInfo"
+                "$ref": "#/components/schemas/CreateUserViewModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserInfo"
+                "$ref": "#/components/schemas/CreateUserViewModel"
               }
             }
           }
@@ -117,66 +117,79 @@
   },
   "components": {
     "schemas": {
-      "UserGroup": {
+      "CreateUserViewModel": {
         "type": "object",
         "properties": {
-          "groupId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "createAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          },
-          "isActive": {
-            "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserInfo": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
+            "$ref": "#/components/schemas/Name"
           },
           "email": {
-            "type": "string",
-            "format": "email",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
+            "$ref": "#/components/schemas/Email"
           },
           "passwordHash": {
             "type": "string",
             "nullable": true
           },
-          "createAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isDeleted": {
-            "type": "boolean"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
           "userGroupId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Email": {
+        "type": "object",
+        "properties": {
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "readOnly": true
           },
-          "userGroup": {
-            "$ref": "#/components/schemas/UserGroup"
+          "isValid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInvalid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "address": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Name": {
+        "type": "object",
+        "properties": {
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "isValid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInvalid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

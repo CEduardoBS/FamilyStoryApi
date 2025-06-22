@@ -1,4 +1,4 @@
-﻿using FamilyStoryApi.Model;
+﻿using FamilyStoryApi.Infra.Entities;
 
 namespace FamilyStoryApi.Business
 {

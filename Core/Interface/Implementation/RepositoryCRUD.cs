@@ -1,6 +1,4 @@
-﻿
-using FamilyStoryApi.Data;
-using FamilyStoryApi.Model;
+﻿using FamilyStoryApi.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamilyStoryApi.Core.Interface.Implementation
