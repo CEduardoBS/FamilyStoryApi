@@ -13,6 +13,8 @@ namespace FamilyStoryApi.Infra.Entities
         [Column("grp_name")]
         public string Name { get; set; } = string.Empty;
 
+        public List<UserGroupPermission> UserGroupPermissions { get; set; } = new();
+
         [Column("grp_created_at")]
         public DateTime CreateAt { get; set; }
 

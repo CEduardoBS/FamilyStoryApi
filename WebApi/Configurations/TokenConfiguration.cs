@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace FamilyStoryApi.Core.Configurations
+namespace FamilyStoryApi.WebApi.Configurations
 {
     public static class TokenConfiguration
     {

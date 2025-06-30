@@ -1,21 +1,21 @@
-﻿using FamilyStoryApi.Core.Configurations;
-using FamilyStoryApi.Infra.Entities;
+﻿using FamilyStoryApi.Infra.Entities;
+using FamilyStoryApi.WebApi.Configurations;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace FamilyStoryApi.Application.Services
+namespace FamilyStoryApi.WebApi.Services
 {
     public class TokenService
     {
         public string GenerateToken(UserInfo user)
         {
             var handler = new JwtSecurityTokenHandler();
- 
+
             var credentials = new SigningCredentials
                 (
-                     key: new SymmetricSecurityKey(TokenConfiguration.Key), 
+                     key: new SymmetricSecurityKey(TokenConfiguration.Key),
                      SecurityAlgorithms.HmacSha256
                  );
 
@@ -39,7 +39,14 @@ namespace FamilyStoryApi.Application.Services
             ci.AddClaim(new Claim(type: ClaimTypes.Email, value: user.Email));
             ci.AddClaim(new Claim(type: ClaimTypes.GivenName, value: user.Name));
 
-            ci.AddClaim(new Claim(type: ClaimTypes.Role, value: "admin"));
+            if (user.UserGroup is not null)
+            {
+                foreach (var item in user.UserGroup.UserGroupPermissions)
+                {
+                    ci.AddClaim(new Claim(type: ClaimTypes.Role, value: item.Permission.Key));
+                }
+            }
+
 
             return ci;
         }

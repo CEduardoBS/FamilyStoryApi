@@ -5,7 +5,6 @@ using FamilyStoryApi.Application.Queries.User.GetUserById;
 using FamilyStoryApi.Application.Queries.User.GetUserByList;
 using FamilyStoryApi.Application.Queries.User.GetUserList;
 using FamilyStoryApi.Application.Results;
-using FamilyStoryApi.Business;
 using FamilyStoryApi.Domain.ValueObjects;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
@@ -20,12 +19,10 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace FamilyStoryApi.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(policy: "Admin", Roles = "admin")]
     [ApiController]
-    public class UserController(IUserInfoBusiness userInfoBusiness) : ControllerBase
+    public class UserController : ControllerBase
     {
-        private readonly IUserInfoBusiness _userInfoBusiness = userInfoBusiness;
-
+        [Authorize(Roles = "user_create")]
         [HttpPost("create")]
         public async Task<IActionResult> CreteUser(
             [FromServices] CreateUserHandler createUserHandler,
@@ -59,6 +56,7 @@ namespace FamilyStoryApi.WebApi.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "user_read")]
         [HttpGet("id/{id:int}")]
         public async Task<IActionResult> GetUser(
             [FromServices] GetUserByIdHandler handler,
@@ -80,6 +78,7 @@ namespace FamilyStoryApi.WebApi.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "user_read")]
         [HttpGet("range/skip={skip:int}&take={take:int}")]
         public async Task<IActionResult> GetUserByRange(
             [FromServices] GetUserListByRangeHandler handler,
@@ -102,6 +101,7 @@ namespace FamilyStoryApi.WebApi.Controllers
             return BadRequest(result);
         }
 
+        [Authorize(Roles = "user_delete")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteUser(
             [FromServices] DeleteUserHandler deleteHandler,

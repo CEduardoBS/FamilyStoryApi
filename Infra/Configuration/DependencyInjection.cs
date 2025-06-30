@@ -2,12 +2,10 @@
 using FamilyStoryApi.Application.Handlers.User;
 using FamilyStoryApi.Application.Queries.User.GetUserById;
 using FamilyStoryApi.Application.Queries.User.GetUserByList;
-using FamilyStoryApi.Application.Services;
-using FamilyStoryApi.Business;
-using FamilyStoryApi.Business.Implementation;
-using FamilyStoryApi.Core.Configurations;
 using FamilyStoryApi.Infra.Repository;
 using FamilyStoryApi.Infra.Repository.Implementation;
+using FamilyStoryApi.WebApi.Configurations;
+using FamilyStoryApi.WebApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
@@ -17,19 +15,20 @@ namespace FamilyStoryApi.Infra.Configuration
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services) 
         {
+            #region Repositories
             services.AddScoped<IUserInfoRepository, UserInfoRepositoryImplementation>();
-            services.AddScoped<IUserInfoBusiness, UserInfoBusinessImplementation>();
-            
-            // Handlers
+            #endregion
+
+            #region Handlers
             services.AddScoped<CreateUserHandler>();
             services.AddScoped<DeleteUserHandler>();
             services.AddScoped<AuthHandler>();
+            #endregion
 
-            //Queries
+            #region Queries
             services.AddScoped<GetUserByIdHandler>();
             services.AddScoped<GetUserListByRangeHandler>();
-
-
+            #endregion
 
             return services;
         }

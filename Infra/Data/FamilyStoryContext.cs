@@ -16,6 +16,7 @@ namespace FamilyStoryApi.Infra.Data
         public DbSet<Story> Stories { get; set; }
 
         public DbSet<LevelParentage> LevelParentages { get; set; }
+        public DbSet<Permissions> Permissions { get; set; }
 
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Family_Story;User id=sa;Password=1q2w3e4r@#$");*/

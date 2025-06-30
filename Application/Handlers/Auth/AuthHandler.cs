@@ -1,10 +1,11 @@
 ﻿using FamilyStoryApi.Application.Commands.Auth;
 using FamilyStoryApi.Application.Handlers.Interface;
 using FamilyStoryApi.Application.Results;
-using FamilyStoryApi.Application.Services;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.Infra.Repository;
+using FamilyStoryApi.WebApi.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace FamilyStoryApi.Application.Handlers.Auth
 {
@@ -34,14 +35,24 @@ namespace FamilyStoryApi.Application.Handlers.Auth
                     {
                         if (user.ValidPassword(command.Password))
                         {
-                            string tokenGenerated = _tokenService.GenerateToken(user);
+                            UserInfo? userInfo2 = await _userInfoRepository.GetUserFullInfo(user.UserId);
 
-                            loginResult = new LoginResult
+                            if (userInfo2 is not null)
+                            {
+                                string tokenGenerated = _tokenService.GenerateToken(userInfo2);
+                                loginResult = new LoginResult
                                 (
                                     name: user.Name,
                                     email: command.Login.Address,
                                     token: tokenGenerated
                                 );
+                            }
+                            else
+                            {
+                                this.AddNotification("AuthHandler.HandleAsync: Não foi possível gerar token de autorização!");
+                            }
+
+
                         }
                         else
                         {

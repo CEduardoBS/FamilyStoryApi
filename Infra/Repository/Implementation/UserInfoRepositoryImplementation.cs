@@ -1,4 +1,5 @@
 ﻿using FamilyStoryApi.Core.Interface.Implementation;
+using FamilyStoryApi.Domain.ValueObjects;
 using FamilyStoryApi.Infra.Data;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.Infra.Repository;
@@ -51,7 +52,22 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
         public async Task<UserInfo?> GetUserByEmail(string email)
         {
             DbSet<UserInfo> dbSet = dbContext.Set<UserInfo>();
-            UserInfo? userInfo = await dbSet.FirstOrDefaultAsync(user => user.Email.ToLower().Equals(email.ToLower()));
+            UserInfo? userInfo = await dbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(user => user.Email.ToLower().Equals(email.ToLower()));
+
+            return userInfo;
+        }
+
+        public async Task<UserInfo?> GetUserFullInfo(int id)
+        {
+            DbSet<UserInfo> dbSet = dbContext.Set<UserInfo>();
+            UserInfo? userInfo = await dbSet
+                .AsNoTracking()
+                .Include(user => user.UserGroup)
+                    .ThenInclude(group => group.UserGroupPermissions)
+                        .ThenInclude(permissions => permissions.Permission)
+                .FirstOrDefaultAsync(user => user.UserId == id);
 
             return userInfo;
         }

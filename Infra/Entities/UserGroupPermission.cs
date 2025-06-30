@@ -15,7 +15,11 @@ namespace FamilyStoryApi.Infra.Entities
         public int UserGroupId { get; set; }
         public UserGroup? UserGroup { get; set; }
 
-        [Required]
+        [Column("prm_id_permission")]
+        [ForeignKey("PermissionId")]
+        public int PermissionId { get; set; }
+        public Permissions Permission { get; set; } = new();
+
         [Column("prm_name")]
         public string Name { get; set; } = string.Empty;
 
@@ -24,9 +28,9 @@ namespace FamilyStoryApi.Infra.Entities
         public DateTime CreateAt { get; set; }
 
         [Column("prm_is_deleted")]
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [Column("prm_is_active")]
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }
