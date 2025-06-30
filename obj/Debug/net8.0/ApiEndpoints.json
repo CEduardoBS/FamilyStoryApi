@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.AuthController",
+    "Method": "AuthLogin",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authCommand",
+        "Type": "FamilyStoryApi.Application.Commands.Auth.AuthCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/{id}",

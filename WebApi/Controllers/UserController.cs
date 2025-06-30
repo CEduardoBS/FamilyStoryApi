@@ -10,6 +10,7 @@ using FamilyStoryApi.Domain.ValueObjects;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
 using FamilyStoryApi.WebApi.ViewModels.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace FamilyStoryApi.WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(policy: "Admin", Roles = "admin")]
     [ApiController]
     public class UserController(IUserInfoBusiness userInfoBusiness) : ControllerBase
     {
@@ -38,18 +40,11 @@ namespace FamilyStoryApi.WebApi.Controllers
                  userGroupId: userInfo.UserGroupId
                  );
 
-            if (cmdUser.Validate())
-            {
-                CommandResult<UserInfo> cmdResult = await createUserHandler.HandleAsync(cmdUser);
+            CommandResult<UserInfo> cmdResult = await createUserHandler.HandleAsync(cmdUser);
 
-                if (createUserHandler.IsValid)
-                {
-                    result = new(data: cmdResult);
-                }
-                else
-                {
-                    result = new(errors: [.. createUserHandler.Notifications]);
-                }
+            if (createUserHandler.IsValid)
+            {
+                result = new(data: cmdResult);
             }
             else
             {

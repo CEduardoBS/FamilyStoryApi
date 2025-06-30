@@ -6,7 +6,7 @@ namespace FamilyStoryApi.Domain.ValueObjects
 {
     public class Email : ValueObject
     {
-        [EmailAddress(ErrorMessage = "E-mail inváliedo")]
+        [EmailAddress(ErrorMessage = "E-mail inválido")]
         public string Address { get; set; }
 
         public Email() { }

@@ -89,3 +89,4 @@ C:\family_story_project\FamilyStoryApi\obj\Debug\net8.0\refint\FamilyStoryApi.dl
 C:\family_story_project\FamilyStoryApi\obj\Debug\net8.0\FamilyStoryApi.pdb
 C:\family_story_project\FamilyStoryApi\obj\Debug\net8.0\FamilyStoryApi.genruntimeconfig.cache
 C:\family_story_project\FamilyStoryApi\obj\Debug\net8.0\ref\FamilyStoryApi.dll
+C:\family_story_project\FamilyStoryApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

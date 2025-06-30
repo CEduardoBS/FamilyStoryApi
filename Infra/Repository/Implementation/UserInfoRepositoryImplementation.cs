@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace FamilyStoryApi.Infra.Repository.Implementation
 {
     public class UserInfoRepositoryImplementation(FamilyStoryContext dbContext) :
-        RepositoryCRUD<UserInfo>(dbContext),
+        RepositoryCRUD<UserInfo>(context: dbContext),
         IUserInfoRepository
     {
         public override async Task<UserInfo> Create(UserInfo userInfo)
@@ -46,6 +46,14 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
         {
             UserInfo updatedUser = await base.Update(userInfo);
             return updatedUser;
+        }
+
+        public async Task<UserInfo?> GetUserByEmail(string email)
+        {
+            DbSet<UserInfo> dbSet = dbContext.Set<UserInfo>();
+            UserInfo? userInfo = await dbSet.FirstOrDefaultAsync(user => user.Email.ToLower().Equals(email.ToLower()));
+
+            return userInfo;
         }
     }
 }

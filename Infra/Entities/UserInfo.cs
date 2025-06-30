@@ -33,5 +33,19 @@ namespace FamilyStoryApi.Infra.Entities
         [ForeignKey("UserGroupId")]
         public int UserGroupId { get; set; }
         public UserGroup? UserGroup { get; set; }
+
+        public void PasswordToBase64()
+        {
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(this.PasswordHash);
+            this.PasswordHash = Convert.ToBase64String(bytes, 0, bytes.Length);
+        }
+
+        public bool ValidPassword(string passwordDigited)
+        {
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(passwordDigited);
+            string passwordBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+            return passwordBase64.Equals(this.PasswordHash);
+        }
     }
 }

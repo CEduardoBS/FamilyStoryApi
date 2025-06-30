@@ -9,6 +9,7 @@ string connectionString = "Server=localhost,1433;Database=Family_Story;User id=s
 builder.Services.AddDbContext<FamilyStoryContext>(options =>  options.UseSqlServer(connectionString));
 
 builder.Services.AddApplicationServices();
+builder.Services.AddAuthorizationJWT();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -25,7 +25,13 @@ namespace FamilyStoryApi.Application.Commands.User
         public bool Validate()
         {
             AddNotifications(Name, Email);
-            return IsValid;
+
+            if (UserGroupId < 1)
+            {
+                this.AddNotification("CreateUserCommand.Validate: Grupo de usuário inválido");
+            }
+
+            return this.IsValid;
         }
     }
 }
