@@ -14,9 +14,9 @@ namespace FamilyStoryApi.Application.Queries.User.GetUserById
             GetUserViewModel result = new();
             try
             {
-                UserInfo userInfo = await _userInfoRepository.GetById(query.Id);
+                UserInfo? userInfo = await _userInfoRepository.GetById(query.Id);
 
-                if (userInfo.UserId > 0)
+                if (userInfo is not null)
                 {
                     result = new(id: userInfo.UserId, name: userInfo.Name, email: userInfo.Email, createAt: userInfo.CreateAt);
                 }

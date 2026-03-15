@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.StoryController",
+    "Method": "CreateStory",
+    "RelativePath": "api/Story/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "FamilyStoryApi.Application.Stories.Commands.CreateStoryCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamilyStoryApi.WebApi.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/{id}",

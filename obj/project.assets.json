@@ -2759,11 +2759,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\family_story_project\\FamilyStoryApi\\FamilyStoryApi.csproj",
+      "projectUniqueName": "E:\\Projetos\\Pessoal\\family_story_project\\FamilyStoryApi\\FamilyStoryApi.csproj",
       "projectName": "FamilyStoryApi",
-      "projectPath": "C:\\family_story_project\\FamilyStoryApi\\FamilyStoryApi.csproj",
+      "projectPath": "E:\\Projetos\\Pessoal\\family_story_project\\FamilyStoryApi\\FamilyStoryApi.csproj",
       "packagesPath": "C:\\Users\\C-DUD\\.nuget\\packages\\",
-      "outputPath": "C:\\family_story_project\\FamilyStoryApi\\obj\\",
+      "outputPath": "E:\\Projetos\\Pessoal\\family_story_project\\FamilyStoryApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2797,7 +2797,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -2839,7 +2839,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FamilyStoryApi.Infra.Entities
 {
-    [Table("story")]
+    [Table("stories")]
     public class Story
     {
         [Key, DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
@@ -11,13 +11,15 @@ namespace FamilyStoryApi.Infra.Entities
         public int StoryId { get; set; }
 
         [Column("str_user_id")]
-        [ForeignKey("UserId")]
         public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
         public UserInfo? UserInfo { get; set; }
 
         [Column("str_relative_id")]
-        [ForeignKey("RelativesId")]
         public int RelativesId { get; set; }
+
+        [ForeignKey("RelativesId")]
         public Relatives? Relatives { get; set; }
 
         [Column("str_title")]
@@ -40,5 +42,6 @@ namespace FamilyStoryApi.Infra.Entities
 
         [Column("str_is_active")]
         public int IsActive { get; set; }
+
     }
 }
