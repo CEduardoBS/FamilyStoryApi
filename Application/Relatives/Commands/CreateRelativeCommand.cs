@@ -1,0 +1,35 @@
+﻿using FamilyStoryApi.Application.Commands.Interfaces;
+using FamilyStoryApi.Core.Entities;
+
+namespace FamilyStoryApi.Application.Relatives.Commands
+{
+    public class CreateRelativeCommand : Notifiable, ICommandEntry
+    {
+        public int UserId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public int Parantage { get; set; }
+        public DateTime BirthDay { get; set; }
+
+        public bool Validate()
+        {
+            DateTime dtNow = DateTime.Now;
+
+            if (string.IsNullOrEmpty(this.Name.Trim()))
+            {
+                base.AddNotification("Nome do parente está em branco! Informe o nome do parente, por favor!");
+            }
+
+            if (this.Parantage > 0)
+            {
+                base.AddNotification("Grau de parentesco não informado! Por favor, informe o grau de parentesco!");
+            }
+
+            if (this.BirthDay < dtNow)
+            {
+                base.AddNotification("Data de aniversário inválida! A data de aniversário não pode ser posterior a hoje!");
+            }
+
+            return base.IsValid;
+        }
+    }
+}

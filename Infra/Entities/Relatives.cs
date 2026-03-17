@@ -11,8 +11,9 @@ namespace FamilyStoryApi.Infra.Entities
         public int RelativesId { get; set; }
 
         [Column("rlt_user_id")]
-        [ForeignKey("UserId")]
         public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
         public UserInfo? UserInfo { get; set; }
 
         [Column("rlt_name")]
@@ -22,8 +23,9 @@ namespace FamilyStoryApi.Infra.Entities
         public string Relation { get; set; } = string.Empty;
 
         [Column("rlt_parentage")]
-        [ForeignKey("Level")]
         public int LevelParentageId { get; set; }
+
+        [ForeignKey("Level")]
         public LevelParentage? LevelParentage { get; set; }
 
         [Column("rlt_birth_date")]
