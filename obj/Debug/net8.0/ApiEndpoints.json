@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.RelativeController",
+    "Method": "CreateRelative",
+    "RelativePath": "api/Relative/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "FamilyStoryApi.Application.Relatives.Commands.CreateRelativeCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamilyStoryApi.WebApi.Controllers.StoryController",
     "Method": "CreateStory",
     "RelativePath": "api/Story/create",

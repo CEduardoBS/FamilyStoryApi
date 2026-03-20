@@ -3,7 +3,7 @@ using FamilyStoryApi.Infra.Entities;
 
 namespace FamilyStoryApi.Infra.Repository
 {
-    public interface IRelativesRepository : IRepositoryCRUD<Relatives>
+    public interface IRelativesRepository : IRepositoryCRUD<Relative>
     {
     }
 }

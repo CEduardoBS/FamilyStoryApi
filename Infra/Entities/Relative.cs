@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FamilyStoryApi.Infra.Entities
 {
     [Table("relatives")]
-    public class Relatives
+    public class Relative
     {
         [Column("rlt_id"), Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

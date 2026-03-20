@@ -2,6 +2,7 @@
 using FamilyStoryApi.Application.Handlers.User;
 using FamilyStoryApi.Application.Queries.User.GetUserById;
 using FamilyStoryApi.Application.Queries.User.GetUserByList;
+using FamilyStoryApi.Application.Relatives.Handlers;
 using FamilyStoryApi.Application.Stories.Handlers;
 using FamilyStoryApi.Infra.Repository;
 using FamilyStoryApi.Infra.Repository.Implementation;
@@ -19,6 +20,7 @@ namespace FamilyStoryApi.Infra.Configuration
             #region Repositories
             services.AddScoped<IUserInfoRepository, UserInfoRepositoryImplementation>();
             services.AddScoped<IStoryRepository, StoryRepositoryImplementation>();
+            services.AddScoped<IRelativesRepository, RelativesRepositoryImplementation>();
             #endregion
 
             #region Handlers
@@ -26,6 +28,7 @@ namespace FamilyStoryApi.Infra.Configuration
             services.AddScoped<DeleteUserHandler>();
             services.AddScoped<AuthHandler>();
             services.AddScoped<CreateStoryHandler>();
+            services.AddScoped<CreateRelativeHandler>();
             #endregion
 
             #region Queries

@@ -7,24 +7,24 @@ namespace FamilyStoryApi.Application.Relatives.Commands
     {
         public int UserId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public int Parantage { get; set; }
+        public int Parentage { get; set; }
         public DateTime BirthDay { get; set; }
 
         public bool Validate()
         {
             DateTime dtNow = DateTime.Now;
 
-            if (string.IsNullOrEmpty(this.Name.Trim()))
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
                 base.AddNotification("Nome do parente está em branco! Informe o nome do parente, por favor!");
             }
 
-            if (this.Parantage > 0)
+            if (this.Parentage <= 0)
             {
                 base.AddNotification("Grau de parentesco não informado! Por favor, informe o grau de parentesco!");
             }
 
-            if (this.BirthDay < dtNow)
+            if (this.BirthDay > dtNow)
             {
                 base.AddNotification("Data de aniversário inválida! A data de aniversário não pode ser posterior a hoje!");
             }

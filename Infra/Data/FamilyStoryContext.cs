@@ -11,7 +11,7 @@ namespace FamilyStoryApi.Infra.Data
 
         public DbSet<UserGroupPermission> UserGroupPermissions { get; set; }
 
-        public DbSet<Relatives> Relatives { get; set; }
+        public DbSet<Relative> Relatives { get; set; }
 
         public DbSet<Story> Stories { get; set; }
 

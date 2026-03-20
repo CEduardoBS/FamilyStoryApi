@@ -14,8 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Relatives\Handlers\" />
-    <Folder Include="Application\Relatives\Results\" />
     <Folder Include="Application\Relatives\Queries\" />
     <Folder Include="Application\Stories\Queries\" />
   </ItemGroup>

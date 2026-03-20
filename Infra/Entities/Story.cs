@@ -20,7 +20,7 @@ namespace FamilyStoryApi.Infra.Entities
         public int RelativesId { get; set; }
 
         [ForeignKey("RelativesId")]
-        public Relatives? Relatives { get; set; }
+        public Relative? Relatives { get; set; }
 
         [Column("str_title")]
         public string Title { get; set; } = string.Empty;
