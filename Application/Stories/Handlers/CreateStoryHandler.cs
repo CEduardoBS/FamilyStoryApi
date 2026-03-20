@@ -1,11 +1,11 @@
-﻿using FamilyStoryApi.Application.Handlers.Interface;
-using FamilyStoryApi.Application.Results;
+﻿using FamilyStoryApi.Application.Results;
 using FamilyStoryApi.Application.Results.Interfaces;
 using FamilyStoryApi.Application.Stories.Commands;
 using FamilyStoryApi.Application.Stories.Results;
 using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interface;
+using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
-using FamilyStoryApi.Infra.Repository;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
@@ -29,7 +29,7 @@ namespace FamilyStoryApi.Application.Stories.Handlers
                         RelativesId = command.RelativeId,
                         Title = command.Title,
                         Content = command.Content,
-                        CreateAt = DateTime.Now,
+                        CreateAt = DateTime.UtcNow,
                         IsActive = 1,
                         IsDeleted = 0
                     };

@@ -1,9 +1,9 @@
 ﻿using FamilyStoryApi.Application.Commands.User;
-using FamilyStoryApi.Application.Handlers.Interface;
 using FamilyStoryApi.Application.Results;
 using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interface;
+using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
-using FamilyStoryApi.Infra.Repository;
 
 namespace FamilyStoryApi.Application.Handlers.User
 {

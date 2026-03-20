@@ -1,7 +1,7 @@
 ﻿using FamilyStoryApi.Application.Commands.Interfaces;
 using FamilyStoryApi.Application.Results.Interfaces;
 
-namespace FamilyStoryApi.Application.Handlers.Interface
+namespace FamilyStoryApi.Core.Interface
 {
     public interface IHandler<T> where T : ICommandEntry
     {

@@ -1,4 +1,4 @@
-﻿namespace FamilyStoryApi.Application.Queries.Interfaces
+﻿namespace FamilyStoryApi.Core.Interface
 {
     public interface IQueryHandlerAsync<TQuery, TResult>
     {

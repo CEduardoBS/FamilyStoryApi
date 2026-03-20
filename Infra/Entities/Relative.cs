@@ -25,7 +25,7 @@ namespace FamilyStoryApi.Infra.Entities
         [Column("rlt_parentage")]
         public int LevelParentageId { get; set; }
 
-        [ForeignKey("Level")]
+        [ForeignKey("LevelParentageId")]
         public LevelParentage? LevelParentage { get; set; }
 
         [Column("rlt_birth_date")]

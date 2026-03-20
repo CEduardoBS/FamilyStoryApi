@@ -1,7 +1,7 @@
-﻿using FamilyStoryApi.Application.Queries.Interfaces;
-using FamilyStoryApi.Core.Entities;
+﻿using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interface;
+using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
-using FamilyStoryApi.Infra.Repository;
 using FamilyStoryApi.WebApi.ViewModels.User;
 
 namespace FamilyStoryApi.Application.Queries.User.GetUserById

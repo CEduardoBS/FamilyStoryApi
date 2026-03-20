@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-
-namespace FamilyStoryApi.Core.Entities
+﻿namespace FamilyStoryApi.Core.Entities
 {
     public abstract class Notifiable
     {
-        public IList<string> Notifications { get; private set; } = new List<string>();
+        private readonly List<string> _notifications = [];
+
+        public IReadOnlyCollection<string> Notifications => _notifications;
 
         public bool IsValid
         {
@@ -28,31 +28,35 @@ namespace FamilyStoryApi.Core.Entities
 
         public void AddNotification(string message)
         {
-            Notifications.Add(message);
+            if (string.IsNullOrWhiteSpace(message) || !Notifications.Contains(message))
+                _notifications.Add(message);
         }
 
-        public void AddNotifications(List<string> messages)
+        public void AddNotifications(IEnumerable<string> messages)
         {
-            messages.ForEach(message => Notifications.Add(message));
+            foreach (var message in messages)
+            {
+                this.AddNotification(message);
+            }
         }
 
         public void AddNotifications(params Notifiable[] notifiables)
         {
-            foreach (var item in notifiables)
+            foreach (var notifiable in notifiables)
             {
-                if (item.Notifications.Count > 0)
+                if(notifiable is null)
+                    continue;
+
+                foreach (var notification in notifiable.Notifications)
                 {
-                    foreach (var news in item.Notifications)
-                    {
-                        Notifications.Add(news);
-                    }
-                }                
+                    this.AddNotification(notification);
+                }
             }
         }
 
         public void Reset()
         {
-            Notifications.Clear();
+            _notifications.Clear();
         }
 
     }

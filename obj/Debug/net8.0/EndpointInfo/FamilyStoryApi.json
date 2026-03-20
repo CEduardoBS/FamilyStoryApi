@@ -36,10 +36,10 @@
         }
       }
     },
-    "/api/Relative/create": {
+    "/api/Relatives/create": {
       "post": {
         "tags": [
-          "Relative"
+          "Relatives"
         ],
         "requestBody": {
           "content": {

@@ -6,17 +6,28 @@ namespace FamilyStoryApi.Application.Relatives.Commands
     public class CreateRelativeCommand : Notifiable, ICommandEntry
     {
         public int UserId { get; set; }
-        public string Name { get; set; } = string.Empty;
+        public string Name {
+            get { return name; }
+            set { name = value.Trim(); }
+        }
+
         public int Parentage { get; set; }
         public DateTime BirthDay { get; set; }
 
+        string name = string.Empty;
+
         public bool Validate()
         {
-            DateTime dtNow = DateTime.Now;
+            DateTime dtNow = DateTime.UtcNow;
 
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 base.AddNotification("Nome do parente está em branco! Informe o nome do parente, por favor!");
+            }
+
+            if (this.Name.Length > 150)
+            {
+                base.AddNotification("Nome do parente inválido! O nome deve ter no máximo 150 caracteres!");
             }
 
             if (this.Parentage <= 0)

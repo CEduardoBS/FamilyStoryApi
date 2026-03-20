@@ -1,8 +1,7 @@
-﻿using FamilyStoryApi.Core.Interface.Implementation;
+﻿using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Domain.ValueObjects;
 using FamilyStoryApi.Infra.Data;
 using FamilyStoryApi.Infra.Entities;
-using FamilyStoryApi.Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamilyStoryApi.Infra.Repository.Implementation

@@ -1,8 +1,8 @@
-﻿using FamilyStoryApi.Application.Queries.Interfaces;
-using FamilyStoryApi.Application.Queries.User.GetUserList;
+﻿using FamilyStoryApi.Application.Queries.User.GetUserList;
 using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interface;
+using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
-using FamilyStoryApi.Infra.Repository;
 using FamilyStoryApi.WebApi.ViewModels.User;
 using System.Collections.Generic;
 

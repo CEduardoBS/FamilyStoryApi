@@ -1,7 +1,8 @@
-﻿using FamilyStoryApi.Infra.Data;
+﻿using FamilyStoryApi.Core.Interface;
+using FamilyStoryApi.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace FamilyStoryApi.Core.Interface.Implementation
+namespace FamilyStoryApi.Infra.Repository.Implementation
 {
     public class RepositoryCRUD<T> : IRepositoryCRUD<T> where T : class
     {

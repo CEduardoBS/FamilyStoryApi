@@ -1,7 +1,6 @@
-﻿using FamilyStoryApi.Core.Interface;
-using FamilyStoryApi.Infra.Entities;
+﻿using FamilyStoryApi.Infra.Entities;
 
-namespace FamilyStoryApi.Infra.Repository
+namespace FamilyStoryApi.Core.Interface.DataBase
 {
     public interface IUserInfoRepository : IRepositoryCRUD<UserInfo>
     {

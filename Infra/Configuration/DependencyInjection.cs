@@ -4,7 +4,7 @@ using FamilyStoryApi.Application.Queries.User.GetUserById;
 using FamilyStoryApi.Application.Queries.User.GetUserByList;
 using FamilyStoryApi.Application.Relatives.Handlers;
 using FamilyStoryApi.Application.Stories.Handlers;
-using FamilyStoryApi.Infra.Repository;
+using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Repository.Implementation;
 using FamilyStoryApi.WebApi.Configurations;
 using FamilyStoryApi.WebApi.Services;

@@ -1,20 +1,14 @@
 ﻿using FamilyStoryApi.Application.Commands.User;
-using FamilyStoryApi.Application.Handlers.Interface;
 using FamilyStoryApi.Application.Handlers.User;
 using FamilyStoryApi.Application.Queries.User.GetUserById;
 using FamilyStoryApi.Application.Queries.User.GetUserByList;
 using FamilyStoryApi.Application.Queries.User.GetUserList;
 using FamilyStoryApi.Application.Results;
-using FamilyStoryApi.Domain.ValueObjects;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
 using FamilyStoryApi.WebApi.ViewModels.User;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FamilyStoryApi.WebApi.Controllers
 {
