@@ -1,8 +1,8 @@
-﻿using FamilyStoryApi.Application.Users.Commands;
+﻿using FamilyStoryApi.Application.Commom.Results;
+using FamilyStoryApi.Application.Users.Commands;
 using FamilyStoryApi.Application.Users.Handlers;
 using FamilyStoryApi.Application.Users.Queries.GetUserById;
 using FamilyStoryApi.Application.Users.Queries.GetUserByList;
-using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
 using FamilyStoryApi.WebApi.ViewModels.User;

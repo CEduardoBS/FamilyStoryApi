@@ -1,6 +1,6 @@
 ﻿using FamilyStoryApi.Core.Interfaces;
 
-namespace FamilyStoryApi.Core.Entities
+namespace FamilyStoryApi.Application.Commom.Results
 {
     public class CommandResult<T> : ICommandResult
     {
