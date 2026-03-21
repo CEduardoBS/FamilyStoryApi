@@ -1,6 +1,7 @@
-﻿using FamilyStoryApi.Application.Commands.Auth;
-using FamilyStoryApi.Application.Handlers.Auth;
-using FamilyStoryApi.Application.Results;
+﻿using FamilyStoryApi.Application.Auth.Commands;
+using FamilyStoryApi.Application.Auth.Handlers;
+using FamilyStoryApi.Application.Auth.Result;
+using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,12 +1,10 @@
-﻿using FamilyStoryApi.Application.Commands.User;
-using FamilyStoryApi.Application.Results;
-using FamilyStoryApi.Application.Results.Interfaces;
+﻿using FamilyStoryApi.Application.Users.Commands;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
 
-namespace FamilyStoryApi.Application.Handlers.User
+namespace FamilyStoryApi.Application.Users.Handlers
 {
     public class CreateUserHandler(IUserInfoRepository userInfoRepository) : Notifiable, IHandlerAsync<CreateUserCommand, CommandResult<UserInfo>>
     {
@@ -34,7 +32,7 @@ namespace FamilyStoryApi.Application.Handlers.User
                     };
 
                     newUser.PasswordToBase64();
-                    UserInfo userCreated = await _userInfoRepository.Create(newUser);
+                    UserInfo userCreated = await _userInfoRepository.CreateAsync(newUser);
 
                     if (userCreated.UserId > 0)
                     {

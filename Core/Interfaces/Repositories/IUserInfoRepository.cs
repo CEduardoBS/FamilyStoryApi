@@ -6,5 +6,6 @@ namespace FamilyStoryApi.Core.Interface.DataBase
     {
         Task<UserInfo?> GetUserByEmail(string email);
         Task<UserInfo?> GetUserFullInfo(int id);
+        Task<UserInfo> SoftDelete(UserInfo entity);
     }
 }

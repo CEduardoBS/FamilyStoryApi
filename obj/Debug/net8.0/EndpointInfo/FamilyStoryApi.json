@@ -2,7 +2,7 @@
   "openapi": "3.0.4",
   "info": {
     "title": "FamilyStoryApi",
-    "version": "1.0"
+    "version": "v1"
   },
   "paths": {
     "/api/Auth/login": {
@@ -376,6 +376,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Informe apenas o token JWT.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

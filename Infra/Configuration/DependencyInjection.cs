@@ -1,9 +1,9 @@
-﻿using FamilyStoryApi.Application.Handlers.Auth;
-using FamilyStoryApi.Application.Handlers.User;
-using FamilyStoryApi.Application.Queries.User.GetUserById;
-using FamilyStoryApi.Application.Queries.User.GetUserByList;
+﻿using FamilyStoryApi.Application.Auth.Handlers;
 using FamilyStoryApi.Application.Relatives.Handlers;
 using FamilyStoryApi.Application.Stories.Handlers;
+using FamilyStoryApi.Application.Users.Handlers;
+using FamilyStoryApi.Application.Users.Queries.GetUserById;
+using FamilyStoryApi.Application.Users.Queries.GetUserByList;
 using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Repository.Implementation;
 using FamilyStoryApi.WebApi.Configurations;

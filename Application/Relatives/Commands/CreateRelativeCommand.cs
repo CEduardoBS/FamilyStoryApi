@@ -1,5 +1,5 @@
-﻿using FamilyStoryApi.Application.Commands.Interfaces;
-using FamilyStoryApi.Core.Entities;
+﻿using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interfaces;
 
 namespace FamilyStoryApi.Application.Relatives.Commands
 {

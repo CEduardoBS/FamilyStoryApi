@@ -1,4 +1,4 @@
-﻿namespace FamilyStoryApi.Application.Queries.User.GetUserById
+﻿namespace FamilyStoryApi.Application.Users.Queries.GetUserById
 {
     public class GetUserByIdQuery
     {

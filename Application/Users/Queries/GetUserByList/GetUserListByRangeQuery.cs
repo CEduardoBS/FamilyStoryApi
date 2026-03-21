@@ -1,4 +1,4 @@
-﻿namespace FamilyStoryApi.Application.Queries.User.GetUserList
+﻿namespace FamilyStoryApi.Application.Users.Queries.GetUserByList
 {
     public class GetUserListByRangeQuery()
     {

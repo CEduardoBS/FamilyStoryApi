@@ -1,8 +1,8 @@
-﻿using FamilyStoryApi.Application.Commands.Interfaces;
-using FamilyStoryApi.Core.Entities;
+﻿using FamilyStoryApi.Core.Entities;
+using FamilyStoryApi.Core.Interfaces;
 using FamilyStoryApi.Domain.ValueObjects;
 
-namespace FamilyStoryApi.Application.Commands.User
+namespace FamilyStoryApi.Application.Users.Commands
 {
     public class CreateUserCommand : Notifiable, ICommandEntry
     {

@@ -1,12 +1,11 @@
-﻿using FamilyStoryApi.Application.Queries.User.GetUserList;
-using FamilyStoryApi.Core.Entities;
+﻿using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels.User;
 using System.Collections.Generic;
 
-namespace FamilyStoryApi.Application.Queries.User.GetUserByList
+namespace FamilyStoryApi.Application.Users.Queries.GetUserByList
 {
     public class GetUserListByRangeHandler(IUserInfoRepository userInfoRepository) : Notifiable, IQueryHandlerAsync<GetUserListByRangeQuery, List<GetUserViewModel>>
     {
@@ -16,7 +15,7 @@ namespace FamilyStoryApi.Application.Queries.User.GetUserByList
             List<GetUserViewModel> users = [];
             try
             {
-                List<UserInfo> listUsers = await _userInfoRepository.GetRange(query.SkipQtdUsers, query.TakeQtdUsers);
+                List<UserInfo> listUsers = await _userInfoRepository.GetRangeAsync(query.SkipQtdUsers, query.TakeQtdUsers);
 
                 if (listUsers.Count > 0)
                 {

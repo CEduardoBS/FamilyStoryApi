@@ -1,11 +1,10 @@
-﻿using FamilyStoryApi.Application.Commands.User;
-using FamilyStoryApi.Application.Results;
+﻿using FamilyStoryApi.Application.Users.Commands;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
 
-namespace FamilyStoryApi.Application.Handlers.User
+namespace FamilyStoryApi.Application.Users.Handlers
 {
     public class DeleteUserHandler(IUserInfoRepository userInfoRepository) : Notifiable, IHandlerAsync<DeleteUserCommand, CommandResult<bool>>
     {
@@ -22,10 +21,10 @@ namespace FamilyStoryApi.Application.Handlers.User
                 }
                 else
                 {
-                    UserInfo user = await _userInfoRepository.GetById(command.Id);
-                    if (user.UserId > 0)
+                    UserInfo? user = await _userInfoRepository.GetByIdAsync(command.Id);
+                    if (user is not null && user.UserId > 0)
                     {
-                        int qtdRowsDeleted = await _userInfoRepository.Delete(user);
+                        int qtdRowsDeleted = await _userInfoRepository.DeleteAsync(user);
                         if (qtdRowsDeleted > 0)
                         {
                             result = new(message: "Sucesso ao deletar usuário!", success: true, data: true);

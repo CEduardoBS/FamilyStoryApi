@@ -9,7 +9,7 @@
     "Parameters": [
       {
         "Name": "authCommand",
-        "Type": "FamilyStoryApi.Application.Commands.Auth.AuthCommand",
+        "Type": "FamilyStoryApi.Application.Auth.Commands.AuthCommand",
         "IsRequired": true
       }
     ],

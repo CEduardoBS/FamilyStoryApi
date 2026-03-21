@@ -1,7 +1,6 @@
-﻿using FamilyStoryApi.Application.Results.Interfaces;
-using FamilyStoryApi.Core.Entities;
+﻿using FamilyStoryApi.Core.Interfaces;
 
-namespace FamilyStoryApi.Application.Results
+namespace FamilyStoryApi.Core.Entities
 {
     public class CommandResult<T> : ICommandResult
     {

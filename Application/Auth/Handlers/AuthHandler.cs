@@ -1,5 +1,5 @@
-﻿using FamilyStoryApi.Application.Commands.Auth;
-using FamilyStoryApi.Application.Results;
+﻿using FamilyStoryApi.Application.Auth.Commands;
+using FamilyStoryApi.Application.Auth.Result;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
@@ -7,7 +7,7 @@ using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.Services;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace FamilyStoryApi.Application.Handlers.Auth
+namespace FamilyStoryApi.Application.Auth.Handlers
 {
     public class AuthHandler : Notifiable, IHandlerAsync<AuthCommand, CommandResult<LoginResult>>
     {

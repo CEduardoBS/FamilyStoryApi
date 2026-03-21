@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Handlers\Interface\" />
     <Folder Include="Application\LevelParantage\" />
     <Folder Include="Application\Relatives\Queries\" />
     <Folder Include="Application\Stories\Queries\" />

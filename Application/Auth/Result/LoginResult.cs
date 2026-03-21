@@ -1,4 +1,4 @@
-﻿namespace FamilyStoryApi.Application.Results
+﻿namespace FamilyStoryApi.Application.Auth.Result
 {
     public class LoginResult
     {

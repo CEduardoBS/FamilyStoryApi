@@ -1,14 +1,9 @@
-﻿using FamilyStoryApi.Application.Results;
-using FamilyStoryApi.Application.Results.Interfaces;
-using FamilyStoryApi.Application.Stories.Commands;
+﻿using FamilyStoryApi.Application.Stories.Commands;
 using FamilyStoryApi.Application.Stories.Results;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
 
 namespace FamilyStoryApi.Application.Stories.Handlers
 {
@@ -34,7 +29,7 @@ namespace FamilyStoryApi.Application.Stories.Handlers
                         IsDeleted = 0
                     };
 
-                    Story storyResult = await _storyRepository.Create(story);
+                    Story storyResult = await _storyRepository.CreateAsync(story);
 
                     if (storyResult.StoryId > 0)
                     {
@@ -48,13 +43,13 @@ namespace FamilyStoryApi.Application.Stories.Handlers
                     }
                     else
                     {
-                        commandResult = new(success: false, message: "Ops! Não foi possível salvar a história!");
+                        commandResult = new(success: false, message: "CreateStoryHandler.HandlerAsync: Ops! Não foi possível salvar a história!");
                         base.AddNotification(commandResult.Message);
                     }
                 }
                 else
                 {
-                    commandResult = new(success: false, message: "Ops! Não foi possível salvar a história!");
+                    commandResult = new(success: false, message: "CreateStoryHandler.HandlerAsync: Ops! Não foi possível salvar a história!");
                     base.AddNotifications(command);
                 }
             }

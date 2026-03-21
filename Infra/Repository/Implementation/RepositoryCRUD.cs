@@ -15,29 +15,29 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
             _dbSetCRUD = _contextCRUD.Set<T>();
         }
 
-        public virtual async Task<T> Create(T info)
+        public virtual async Task<T> CreateAsync(T entity)
         {
-            await _dbSetCRUD.AddAsync(info);
+            await _dbSetCRUD.AddAsync(entity);
             await _contextCRUD.SaveChangesAsync();
 
-            return info;
+            return entity;
         }
 
-        public virtual async Task<int> Delete(T info)
+        public virtual async Task<int> DeleteAsync(T entity)
         {
-            _dbSetCRUD.Remove(info);
+            _dbSetCRUD.Remove(entity);
             int rowsDeleted = await _contextCRUD.SaveChangesAsync();
 
             return rowsDeleted;
         }
 
-        public virtual async Task<T?> GetById(int id)
+        public virtual async Task<T?> GetByIdAsync(int id)
         {
             T? objFound = await _dbSetCRUD.FindAsync(id);
             return objFound;
         }
 
-        public virtual async Task<List<T>> GetRange(int skip = 0, int take = 10)
+        public virtual async Task<List<T>> GetRangeAsync(int skip = 0, int take = 10)
         {
             List<T> objects = await _dbSetCRUD
                 .AsNoTracking()
@@ -49,20 +49,12 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
             return objects;
         }
 
-        public virtual async Task<T> SoftDelete(T info)
+        public virtual async Task<T> UpdateAsync(T entity)
         {
-            _dbSetCRUD.Update(info);
+            _dbSetCRUD.Update(entity);
             await _contextCRUD.SaveChangesAsync();
 
-            return info;
-        }
-
-        public virtual async Task<T> Update(T info)
-        {
-            _dbSetCRUD.Update(info);
-            await _contextCRUD.SaveChangesAsync();
-
-            return info;
+            return entity;
         }
     }
 }

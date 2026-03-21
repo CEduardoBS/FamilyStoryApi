@@ -1,6 +1,5 @@
 ﻿using FamilyStoryApi.Application.Relatives.Commands;
 using FamilyStoryApi.Application.Relatives.Results;
-using FamilyStoryApi.Application.Results;
 using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.Core.Interface;
 using FamilyStoryApi.Core.Interface.DataBase;
@@ -35,7 +34,7 @@ namespace FamilyStoryApi.Application.Relatives.Handlers
                     IsActive = 1
                 };
 
-                Relative relativeResult = await _relativesRepository.Create(relative);
+                Relative relativeResult = await _relativesRepository.CreateAsync(relative);
 
                 if (relativeResult.RelativesId <= 0)
                 {

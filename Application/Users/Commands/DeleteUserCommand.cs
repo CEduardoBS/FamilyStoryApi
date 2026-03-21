@@ -1,6 +1,6 @@
-﻿using FamilyStoryApi.Application.Commands.Interfaces;
+﻿using FamilyStoryApi.Core.Interfaces;
 
-namespace FamilyStoryApi.Application.Commands.User
+namespace FamilyStoryApi.Application.Users.Commands
 {
     public class DeleteUserCommand : ICommandEntry
     {

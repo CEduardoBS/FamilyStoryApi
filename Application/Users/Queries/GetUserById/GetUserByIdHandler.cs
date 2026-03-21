@@ -4,7 +4,7 @@ using FamilyStoryApi.Core.Interface.DataBase;
 using FamilyStoryApi.Infra.Entities;
 using FamilyStoryApi.WebApi.ViewModels.User;
 
-namespace FamilyStoryApi.Application.Queries.User.GetUserById
+namespace FamilyStoryApi.Application.Users.Queries.GetUserById
 {
     public class GetUserByIdHandler(IUserInfoRepository userInfoRepository) : Notifiable, IQueryHandlerAsync<GetUserByIdQuery, GetUserViewModel>
     {
@@ -14,7 +14,7 @@ namespace FamilyStoryApi.Application.Queries.User.GetUserById
             GetUserViewModel result = new();
             try
             {
-                UserInfo? userInfo = await _userInfoRepository.GetById(query.Id);
+                UserInfo? userInfo = await _userInfoRepository.GetByIdAsync(query.Id);
 
                 if (userInfo is not null)
                 {

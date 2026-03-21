@@ -1,7 +1,7 @@
-﻿using FamilyStoryApi.Application.Commands.Interfaces;
+﻿using FamilyStoryApi.Core.Interfaces;
 using FamilyStoryApi.Domain.ValueObjects;
 
-namespace FamilyStoryApi.Application.Commands.Auth
+namespace FamilyStoryApi.Application.Auth.Commands
 {
     public class AuthCommand : ICommandEntry
     {

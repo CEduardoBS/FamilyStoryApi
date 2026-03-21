@@ -1,6 +1,6 @@
 ﻿using FamilyStoryApi.Core.Entities;
 
-namespace FamilyStoryApi.Application.Commands.Interfaces
+namespace FamilyStoryApi.Core.Interfaces
 {
     public interface ICommandEntry
     {

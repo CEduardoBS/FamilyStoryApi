@@ -1,7 +1,7 @@
 ﻿using FamilyStoryApi.Application.Relatives.Commands;
 using FamilyStoryApi.Application.Relatives.Handlers;
 using FamilyStoryApi.Application.Relatives.Results;
-using FamilyStoryApi.Application.Results;
+using FamilyStoryApi.Core.Entities;
 using FamilyStoryApi.WebApi.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

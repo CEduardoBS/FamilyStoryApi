@@ -1,5 +1,4 @@
-﻿using FamilyStoryApi.Application.Commands.Interfaces;
-using FamilyStoryApi.Application.Results.Interfaces;
+﻿using FamilyStoryApi.Core.Interfaces;
 
 namespace FamilyStoryApi.Core.Interface
 {

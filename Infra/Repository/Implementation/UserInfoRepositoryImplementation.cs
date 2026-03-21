@@ -10,48 +10,20 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
         RepositoryCRUD<UserInfo>(context: dbContext),
         IUserInfoRepository
     {
-        public override async Task<UserInfo> Create(UserInfo userInfo)
-        {
-            await base.Create(userInfo);
-            return userInfo;
-        }
+        private readonly FamilyStoryContext _context = dbContext;
+        private readonly DbSet<UserInfo> _dbSet = dbContext.Set<UserInfo>();
 
-        public override async Task<int> Delete(UserInfo userInfo)
+        public async Task<UserInfo> SoftDelete(UserInfo entity)
         {
-            int qtdRowsDeleted = await base.Delete(userInfo);
-            return qtdRowsDeleted;
-        }
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
 
-        public override async Task<UserInfo> SoftDelete(UserInfo userInfo)
-        {
-            UserInfo updatedUser = await base.Update(userInfo);
-            return updatedUser;
-        }
-
-        public override async Task<UserInfo?> GetById(int id)
-        {
-            UserInfo? foundUser = await base.GetById(id);
-            return foundUser;
-        }
-
-        public override async Task<List<UserInfo>> GetRange(int skip = 0, int take = 10)
-        {
-            List<UserInfo> users = [];
-            users = await base.GetRange(skip, take);
-
-            return users;
-        }
-
-        public override async Task<UserInfo> Update(UserInfo userInfo)
-        {
-            UserInfo updatedUser = await base.Update(userInfo);
-            return updatedUser;
+            return entity;
         }
 
         public async Task<UserInfo?> GetUserByEmail(string email)
         {
-            DbSet<UserInfo> dbSet = dbContext.Set<UserInfo>();
-            UserInfo? userInfo = await dbSet
+            UserInfo? userInfo = await _dbSet
                 .AsNoTracking()
                 .FirstOrDefaultAsync(user => user.Email.ToLower().Equals(email.ToLower()));
 
@@ -60,8 +32,7 @@ namespace FamilyStoryApi.Infra.Repository.Implementation
 
         public async Task<UserInfo?> GetUserFullInfo(int id)
         {
-            DbSet<UserInfo> dbSet = dbContext.Set<UserInfo>();
-            UserInfo? userInfo = await dbSet
+            UserInfo? userInfo = await _dbSet
                 .AsNoTracking()
                 .Include(user => user.UserGroup)
                     .ThenInclude(group => group.UserGroupPermissions)
