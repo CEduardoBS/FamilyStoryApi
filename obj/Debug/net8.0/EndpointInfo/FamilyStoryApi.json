@@ -36,6 +36,37 @@
         }
       }
     },
+    "/api/LevelsParentage/create": {
+      "post": {
+        "tags": [
+          "LevelsParentage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLevelParentageCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLevelParentageCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLevelParentageCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Relatives/create": {
       "post": {
         "tags": [
@@ -67,10 +98,10 @@
         }
       }
     },
-    "/api/Story/create": {
+    "/api/Stories/create": {
       "post": {
         "tags": [
-          "Story"
+          "Stories"
         ],
         "requestBody": {
           "content": {
@@ -98,10 +129,10 @@
         }
       }
     },
-    "/api/User/create": {
+    "/api/Users/create": {
       "post": {
         "tags": [
-          "User"
+          "Users"
         ],
         "requestBody": {
           "content": {
@@ -129,10 +160,10 @@
         }
       }
     },
-    "/api/User/id/{id}": {
+    "/api/Users/id/{id}": {
       "get": {
         "tags": [
-          "User"
+          "Users"
         ],
         "parameters": [
           {
@@ -152,10 +183,10 @@
         }
       }
     },
-    "/api/User/range/skip={skip}&take={take}": {
+    "/api/Users/range/skip={skip}&take={take}": {
       "get": {
         "tags": [
-          "User"
+          "Users"
         ],
         "parameters": [
           {
@@ -184,10 +215,10 @@
         }
       }
     },
-    "/api/User/{id}": {
+    "/api/Users/{id}": {
       "delete": {
         "tags": [
-          "User"
+          "Users"
         ],
         "parameters": [
           {
@@ -217,6 +248,36 @@
             "$ref": "#/components/schemas/Email"
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateLevelParentageCommand": {
+        "type": "object",
+        "properties": {
+          "notifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "isValid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "isInvalid": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "levelParentage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
             "type": "string",
             "nullable": true
           }

@@ -13,7 +13,7 @@ namespace FamilyStoryApi.Infra.Entities
         [Column("lvl_level")]
         public int Level { get; set; }
 
-        [Column("lvl_description")]
+        [Column("lvl_name")]
         public string Description { get; set; } = string.Empty;
 
         [Column("lvl_is_deleted")]

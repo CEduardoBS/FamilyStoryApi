@@ -17,14 +17,14 @@ namespace FamilyStoryApi.WebApi.Controllers
         //[Authorize(Roles = "relative_create")]
         public async Task<IActionResult> CreateRelative([FromServices] CreateRelativeHandler handler, [FromBody] CreateRelativeCommand command)
         {
-            string? userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //string? userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (string.IsNullOrWhiteSpace(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
-            {
-                return Unauthorized(new ResultViewModel<object>(errors: ["Usuário autenticado inválido."]));
-            }
+            //if (string.IsNullOrWhiteSpace(userIdClaim) || !int.TryParse(userIdClaim, out int userId))
+            //{
+            //    return Unauthorized(new ResultViewModel<object>(errors: ["Usuário autenticado inválido."]));
+            //}
 
-            command.UserId = userId;
+            //command.UserId = userId;
 
             CommandResult<CreateRelativeResult> cmResult = await handler.HandleAsync(command);
 

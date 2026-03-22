@@ -22,7 +22,7 @@ namespace FamilyStoryApi.Infra.Entities
         [Column("rlt_relation")]
         public string Relation { get; set; } = string.Empty;
 
-        [Column("rlt_parentage")]
+        [Column("rlt_level_parentage")]
         public int LevelParentageId { get; set; }
 
         [ForeignKey("LevelParentageId")]

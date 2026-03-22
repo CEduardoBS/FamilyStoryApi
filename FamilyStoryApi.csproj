@@ -14,8 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\LevelParentages\Queries\" />
-    <Folder Include="Application\LevelParentages\Results\" />
+    <Folder Include="Application\LevelsParentage\Queries\" />
     <Folder Include="Application\Relatives\Queries\" />
     <Folder Include="Application\Stories\Queries\" />
   </ItemGroup>

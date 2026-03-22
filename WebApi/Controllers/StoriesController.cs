@@ -10,7 +10,7 @@ namespace FamilyStoryApi.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class StoryController : ControllerBase
+    public class StoriesController : ControllerBase
     {
         [HttpPost("create")]
         //[Authorize(Roles = "story_create")]
