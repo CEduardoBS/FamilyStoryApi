@@ -2,6 +2,7 @@
 using FamilyStoryApi.Application.LevelParentages.Handlers;
 using FamilyStoryApi.Application.Relatives.Handlers;
 using FamilyStoryApi.Application.Stories.Handlers;
+using FamilyStoryApi.Application.Stories.Queries.GetStoryById;
 using FamilyStoryApi.Application.Users.Handlers;
 using FamilyStoryApi.Application.Users.Queries.GetUserById;
 using FamilyStoryApi.Application.Users.Queries.GetUserByList;
@@ -38,6 +39,7 @@ namespace FamilyStoryApi.Infra.Configuration
             #region Queries
             services.AddScoped<GetUserByIdHandler>();
             services.AddScoped<GetUserListByRangeHandler>();
+            services.AddScoped<GetStoryByIdHandler>();
             #endregion
 
             return services;

@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="Application\LevelsParentage\Queries\" />
     <Folder Include="Application\Relatives\Queries\" />
-    <Folder Include="Application\Stories\Queries\" />
   </ItemGroup>
 
 </Project>

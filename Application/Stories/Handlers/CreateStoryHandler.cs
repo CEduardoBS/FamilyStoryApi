@@ -26,8 +26,8 @@ namespace FamilyStoryApi.Application.Stories.Handlers
                         Title = command.Title,
                         Content = command.Content,
                         CreateAt = DateTime.UtcNow,
-                        IsActive = 1,
-                        IsDeleted = 0
+                        IsActive = true,
+                        IsDeleted = false
                     };
 
                     Story storyResult = await _storyRepository.CreateAsync(story);

@@ -50,6 +50,22 @@
   {
     "ContainingType": "FamilyStoryApi.WebApi.Controllers.StoriesController",
     "Method": "CreateStory",
+    "RelativePath": "api/Stories/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamilyStoryApi.WebApi.Controllers.StoriesController",
+    "Method": "CreateStory",
     "RelativePath": "api/Stories/create",
     "HttpMethod": "POST",
     "IsController": true,

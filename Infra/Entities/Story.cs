@@ -38,10 +38,10 @@ namespace FamilyStoryApi.Infra.Entities
         public DateTime CreateAt { get; set; }
 
         [Column("str_is_deleted")]
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [Column("str_is_active")]
-        public int IsActive { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }
